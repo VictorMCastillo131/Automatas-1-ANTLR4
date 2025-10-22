@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculadora</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Calculadora</h2>
+        <form method="post">
+            <label for="expr">Expresión (ejemplo: 5+3, 7*2, 10/2):</label><br>
+            <input type="text" name="expr" id="expr" required value="{{ expr if expr is defined else '' }}" class="input-box"><br><br>
+            <button type="submit" class="btn">Calcular</button>
+        </form>
+        {% if output %}
+        <div class="output">
+            <strong>Resultado:</strong><br>
+            {{ output }}
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>

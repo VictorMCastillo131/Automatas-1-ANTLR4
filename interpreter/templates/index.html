@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>MiniLang Calculadora</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>MiniLang Calculadora (Django)</h2>
+        <form method="post">
+            {% csrf_token %}
+            <label for="expr">Expresión (ejemplo: 5+3):</label><br>
+            <input type="text" name="expr" id="expr" required value="{{ expr }}" class="input-box"><br><br>
+            <button type="submit" class="btn">Calcular</button>
+        </form>
+        {% if output %}
+        <div class="output">
+            <strong>Resultado:</strong><br>
+            {{ output }}
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
