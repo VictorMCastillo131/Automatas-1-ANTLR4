@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from django.views.decorators.csrf import csrf_exempt
 import subprocess
 import sys
 import os
@@ -7,7 +6,6 @@ import os
 # Importar la configuración de Django para acceder a BASE_DIR
 from django.conf import settings
 
-@csrf_exempt
 def index(request):
     output = ''
     expr = ''
