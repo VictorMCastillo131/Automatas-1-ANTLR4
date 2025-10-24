@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 import os
 from pathlib import Path
-import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,7 +20,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = 'django-insecure-e62osqk9es)chi_xhndo_pdkj*1y1+b0=)+=y0d_&wwn)7d2@!'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'RENDER' not in os.environ
@@ -76,17 +75,12 @@ WSGI_APPLICATION = 'minilang_project.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-if 'RENDER' in os.environ:
-    DATABASES = {
-        'default': dj_database_url.config(conn_max_age=600, ssl_require=True)
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
-        }
-    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -107,17 +101,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR / "static"]  # 👈 Aquí Django buscará tus CSS locales
-STATIC_ROOT = BASE_DIR / "staticfiles"    # 👈 Aquí se recopilarán los archivos con collectstatic
 
 # Directorio donde `collectstatic` reunirá todos los archivos estáticos para el despliegue.
 STATIC_ROOT = BASE_DIR / "staticfiles"
-
-# Default primary key field type
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # --- CONFIGURACIÓN DE ESTÁTICOS PARA PRODUCCIÓN EN RENDER ---
 if 'RENDER' in os.environ:
     # Habilita el almacenamiento eficiente de WhiteNoise
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-# --- FIN CONFIGURACIÓN ---
+
+# Default primary key field type
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

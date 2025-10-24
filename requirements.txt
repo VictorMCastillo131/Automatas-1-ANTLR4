@@ -7,9 +7,5 @@ gunicorn
 # Para servir archivos estáticos (CSS, JS) en producción
 whitenoise
 
-# Para la base de datos de Render (PostgreSQL)
-dj-database-url==2.1.0
-psycopg2-binary
-
 # Dependencia de tu intérprete ANTLR
 antlr4-python3-runtime
