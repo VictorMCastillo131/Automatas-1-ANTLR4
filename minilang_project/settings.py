@@ -31,9 +31,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'interpreter',  # tu app
-]
+    'interpreter',# tu app
+    # 'whitenoise.runserver_nostatic' # Comentar o eliminar para desarrollo local
 
+]
+    
 # ===============================
 # MIDDLEWARE
 # ===============================
@@ -112,11 +114,12 @@ STATICFILES_DIRS = [
 # 👉 Carpeta donde se reunirán todos los archivos estáticos al hacer deploy
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
-# --- Configuración especial para Render ---
-if 'RENDER' in os.environ:
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # ===============================
 # CONFIGURACIÓN FINAL
 # ===============================
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# --- Configuración especial para Render ---
+if 'RENDER' in os.environ:
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
