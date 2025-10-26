@@ -1,11 +1,4 @@
-# Framework principal
-django
-
-# Servidor WSGI para producción (usado por Render)
-gunicorn
-
-# Para servir archivos estáticos (CSS, JS) en producción
-whitenoise
-
-# Dependencia de tu intérprete ANTLR
-antlr4-python3-runtime
+Django>=5.2.7
+gunicorn>=23.0.0
+whitenoise>=6.11.0
+antlr4-python3-runtime>=4.13.2

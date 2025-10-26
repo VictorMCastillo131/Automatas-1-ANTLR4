@@ -1,30 +1,35 @@
-{% load static %}
 <!DOCTYPE html>
-<html lang="es">
+<html>
 <head>
-    <meta charset="UTF-8">
     <title>Calculadora</title>
-    <link rel="stylesheet" href="{% static 'style.css' %}">
+    {% load static %}
+    <!-- Cambia esta línea -->
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
 </head>
 <body>
     <div class="container">
-        <h2>Calculadora</h2>
+        <h1>Calculadora</h1>
+        
         <form method="post">
             {% csrf_token %}
-            
-            <label for="expr">Expresión (ejemplo: 5+3, 7*2, 10/2):</label><br>
-            
-            <input type="text" name="expr" id="expr" required value="{{ expr }}" class="input-box"><br><br>
-            
-            <button type="submit" class="btn">Calcular</button>
+            <label for="expr">Expression (ejemplo: 5+3, 7*2, 10/2):</label><br>
+            <input type="text" id="expr" name="expr" value="{{ expr }}" required><br><br>
+            <button type="submit">Calcular</button>
         </form>
+
         {% if output %}
-        <div class="output">
-            <strong>Resultado:</strong><br>
-            {{ output }}
+        <div class="resultado">
+            <h2>Resultado:</h2>
+            <p>{{ output }}</p>
+        </div>
+        {% endif %}
+
+        {% if error_output %}
+        <div class="error">
+            <h2>Error:</h2>
+            <p>{{ error_output }}</p>
         </div>
         {% endif %}
     </div>
 </body>
 </html>
-

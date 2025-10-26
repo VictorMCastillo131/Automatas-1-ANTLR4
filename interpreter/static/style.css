@@ -1,67 +1,165 @@
+/* interpreter/static/interpreter/style.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
     background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
     font-family: 'Segoe UI', 'Arial', sans-serif;
     margin: 0;
     padding: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .container {
-    max-width: 400px;
-    margin: 60px auto;
+    max-width: 500px;
+    width: 90%;
+    margin: 40px auto;
     background: #fff;
     border-radius: 16px;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.10);
-    padding: 2em 2em 1em 2em;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+    padding: 2.5em;
     text-align: center;
 }
 
-h2 {
+h1 {
     color: #2a5298;
-    margin-bottom: 1em;
+    margin-bottom: 1.5em;
     font-weight: 700;
+    font-size: 2.2em;
+    text-align: center;
 }
 
 label {
     color: #333;
-    font-size: 1.1em;
+    font-size: 1.2em;
     font-weight: 500;
+    display: block;
+    margin-bottom: 0.8em;
+    text-align: left;
 }
 
-.input-box {
-    width: 80%;
-    padding: 0.7em;
-    margin-top: 0.5em;
-    border: 1px solid #b6c1d6;
-    border-radius: 8px;
+input[type="text"] {
+    width: 100%;
+    padding: 1em;
+    margin-bottom: 1.5em;
+    border: 2px solid #b6c1d6;
+    border-radius: 10px;
     font-size: 1.1em;
     background: #f7faff;
     color: #2a5298;
     text-align: center;
+    transition: all 0.3s ease;
 }
 
-.btn {
+input[type="text"]:focus {
+    outline: none;
+    border-color: #2a5298;
+    box-shadow: 0 0 0 3px rgba(42, 82, 152, 0.1);
+    background: #fff;
+}
+
+button {
     background: linear-gradient(90deg, #2a5298 0%, #1e3c72 100%);
     color: #fff;
     border: none;
-    border-radius: 8px;
-    padding: 0.7em 2em;
-    font-size: 1.1em;
+    border-radius: 10px;
+    padding: 1em 2.5em;
+    font-size: 1.2em;
     font-weight: 600;
     cursor: pointer;
-    margin-top: 1em;
-    transition: background 0.2s;
+    margin-top: 0.5em;
+    transition: all 0.3s ease;
+    width: 100%;
+    box-shadow: 0 4px 15px rgba(42, 82, 152, 0.3);
 }
 
-.btn:hover {
+button:hover {
     background: linear-gradient(90deg, #1e3c72 0%, #2a5298 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(42, 82, 152, 0.4);
 }
 
-.output {
+button:active {
+    transform: translateY(0);
+}
+
+.resultado {
     background: #eaf1fb;
     color: #1e3c72;
-    border-radius: 8px;
+    border-radius: 10px;
     margin-top: 2em;
-    padding: 1em;
+    padding: 1.5em;
+    font-size: 1.3em;
+    box-shadow: 0 4px 12px rgba(42,82,152,0.1);
+    border-left: 5px solid #2a5298;
+}
+
+.resultado h2 {
+    color: #2a5298;
+    margin-bottom: 0.8em;
+    font-size: 1.4em;
+    font-weight: 600;
+}
+
+.resultado p {
+    font-size: 1.8em;
+    font-weight: 700;
+    color: #1e3c72;
+    margin: 0;
+}
+
+.error {
+    background: #ffe6e6;
+    color: #cc0000;
+    border-radius: 10px;
+    margin-top: 2em;
+    padding: 1.5em;
     font-size: 1.1em;
-    box-shadow: 0 2px 8px rgba(42,82,152,0.08);
+    box-shadow: 0 4px 12px rgba(204,0,0,0.1);
+    border-left: 5px solid #cc0000;
+}
+
+.error h2 {
+    color: #cc0000;
+    margin-bottom: 0.8em;
+    font-size: 1.3em;
+    font-weight: 600;
+}
+
+.error p {
+    font-size: 1.1em;
+    font-weight: 500;
+    margin: 0;
+}
+
+/* Estilos responsivos */
+@media (max-width: 600px) {
+    .container {
+        margin: 20px auto;
+        padding: 1.5em;
+    }
+    
+    h1 {
+        font-size: 1.8em;
+    }
+    
+    input[type="text"] {
+        font-size: 1em;
+        padding: 0.8em;
+    }
+    
+    button {
+        font-size: 1.1em;
+        padding: 0.8em 2em;
+    }
+    
+    .resultado p {
+        font-size: 1.5em;
+    }
 }
